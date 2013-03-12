@@ -1,0 +1,2361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet author="konopski (generated)" id="1363003572734-1">
+        <createTable schemaName="dbo" tableName="Authors">
+            <column name="author_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Authors__EC91C52903317E3D"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-2">
+        <createTable schemaName="dbo" tableName="Books">
+            <column name="isbn" type="VARCHAR(20)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_Books"/>
+            </column>
+            <column name="author_name" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="publisher_name" type="VARCHAR(50)"/>
+            <column name="publication_year" type="INT"/>
+            <column name="binding" type="VARCHAR(55)"/>
+            <column name="source_numb" type="INT"/>
+            <column name="retail_price" type="decimal(8,2)"/>
+            <column name="number_on_hand" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-3">
+        <createTable schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Customer__568FB1CB0AD2A005"/>
+            </column>
+            <column name="customer_first_name" type="VARCHAR(15)"/>
+            <column name="customer_last_name" type="VARCHAR(25)"/>
+            <column name="customer_street" type="VARCHAR(55)"/>
+            <column name="customer_city" type="VARCHAR(55)"/>
+            <column name="customer_state" type="CHAR(2)"/>
+            <column name="customer_zip" type="VARCHAR(5)"/>
+            <column name="customer_phone" type="VARCHAR(12)"/>
+            <column name="customer_email" type="VARCHAR(55)"/>
+            <column name="referred_by" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-4">
+        <createTable schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="INT"/>
+            <column name="cost_each" type="decimal(8,2)"/>
+            <column name="cost_line" type="decimal(8,2)"/>
+            <column name="shipped" type="CHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-5">
+        <createTable schemaName="dbo" tableName="Orders">
+            <column name="order_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_Orders"/>
+            </column>
+            <column name="customer_numb" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_date" type="DATETIME"/>
+            <column name="credit_card_numb" type="VARCHAR(50)"/>
+            <column name="order_filled" type="VARCHAR(3)"/>
+            <column name="credit_card_exp_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-6">
+        <createTable schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Publishe__8DBCD4137F60ED59"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-7">
+        <createTable schemaName="dbo" tableName="Sources">
+            <column name="source_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Sources__63A26AE507020F21"/>
+            </column>
+            <column name="source_name" type="VARCHAR(55)"/>
+            <column name="source_street" type="VARCHAR(55)"/>
+            <column name="source_city" type="VARCHAR(55)"/>
+            <column name="source_state" type="CHAR(2)"/>
+            <column name="source_zip" type="CHAR(5)"/>
+            <column name="source_phone" type="CHAR(12)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003572734-8">
+        <addPrimaryKey columnNames="order_numb, isbn" constraintName="PK_order_lines" schemaName="dbo" tableName="order_lines"/>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-1">
+        <createTable schemaName="dbo" tableName="Authors">
+            <column name="author_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Authors__EC91C52903317E3D"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-2">
+        <createTable schemaName="dbo" tableName="Books">
+            <column name="isbn" type="VARCHAR(20)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_Books"/>
+            </column>
+            <column name="author_name" type="VARCHAR(50)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="publisher_name" type="VARCHAR(50)"/>
+            <column name="publication_year" type="INT"/>
+            <column name="binding" type="VARCHAR(55)"/>
+            <column name="source_numb" type="INT"/>
+            <column name="retail_price" type="decimal(8,2)"/>
+            <column name="number_on_hand" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-3">
+        <createTable schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Customer__568FB1CB0AD2A005"/>
+            </column>
+            <column name="customer_first_name" type="VARCHAR(15)"/>
+            <column name="customer_last_name" type="VARCHAR(25)"/>
+            <column name="customer_street" type="VARCHAR(55)"/>
+            <column name="customer_city" type="VARCHAR(55)"/>
+            <column name="customer_state" type="CHAR(2)"/>
+            <column name="customer_zip" type="VARCHAR(5)"/>
+            <column name="customer_phone" type="VARCHAR(12)"/>
+            <column name="customer_email" type="VARCHAR(55)"/>
+            <column name="referred_by" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-4">
+        <createTable schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="INT"/>
+            <column name="cost_each" type="decimal(8,2)"/>
+            <column name="cost_line" type="decimal(8,2)"/>
+            <column name="shipped" type="CHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-5">
+        <createTable schemaName="dbo" tableName="Orders">
+            <column name="order_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_Orders"/>
+            </column>
+            <column name="customer_numb" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_date" type="DATETIME"/>
+            <column name="credit_card_numb" type="VARCHAR(50)"/>
+            <column name="order_filled" type="VARCHAR(3)"/>
+            <column name="credit_card_exp_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-6">
+        <createTable schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Publishe__8DBCD4137F60ED59"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-7">
+        <createTable schemaName="dbo" tableName="Sources">
+            <column name="source_numb" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK__Sources__63A26AE507020F21"/>
+            </column>
+            <column name="source_name" type="VARCHAR(55)"/>
+            <column name="source_street" type="VARCHAR(55)"/>
+            <column name="source_city" type="VARCHAR(55)"/>
+            <column name="source_state" type="CHAR(2)"/>
+            <column name="source_zip" type="CHAR(5)"/>
+            <column name="source_phone" type="CHAR(12)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-8">
+        <addPrimaryKey columnNames="order_numb, isbn" constraintName="PK_order_lines" schemaName="dbo" tableName="order_lines"/>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-9">
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="1"/>
+            <column name="customer_first_name" value="Jane"/>
+            <column name="customer_last_name" value="Jones"/>
+            <column name="customer_street" value="125 W. 88th Blvd."/>
+            <column name="customer_city" value="Anytown"/>
+            <column name="customer_state" value="NJ"/>
+            <column name="customer_zip" value="10110"/>
+            <column name="customer_phone" value="552-555-1234"/>
+            <column name="customer_email" value="jane_jones@anywhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="2"/>
+            <column name="customer_first_name" value="Tom"/>
+            <column name="customer_last_name" value="Smith"/>
+            <column name="customer_street" value="4592 Maple Lane"/>
+            <column name="customer_city" value="Some City"/>
+            <column name="customer_state" value="NY"/>
+            <column name="customer_zip" value="12345"/>
+            <column name="customer_phone" value="555-555-4321"/>
+            <column name="customer_email" value="tom_smith@this.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="3"/>
+            <column name="customer_first_name" value="Mary"/>
+            <column name="customer_last_name" value="Johnson"/>
+            <column name="customer_street" value="98 Elm St."/>
+            <column name="customer_city" value="Little Town"/>
+            <column name="customer_state" value="M "/>
+            <column name="customer_zip" value="23456"/>
+            <column name="customer_phone" value="551-555-4567"/>
+            <column name="customer_email" value="mary_johnson@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="4"/>
+            <column name="customer_first_name" value="John"/>
+            <column name="customer_last_name" value="Smith"/>
+            <column name="customer_street" value="867 Apple Tree Road"/>
+            <column name="customer_city" value="Anytown"/>
+            <column name="customer_state" value="NJ"/>
+            <column name="customer_zip" value="10111"/>
+            <column name="customer_phone" value="552-555-9876"/>
+            <column name="customer_email" value="john_smith@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="5"/>
+            <column name="customer_first_name" value="Emily"/>
+            <column name="customer_last_name" value="Jones"/>
+            <column name="customer_street" value="7921 Fir Road"/>
+            <column name="customer_city" value="Anytown"/>
+            <column name="customer_state" value="NY"/>
+            <column name="customer_zip" value="12344"/>
+            <column name="customer_phone" value="555-555-7654"/>
+            <column name="customer_email" value="emily_jones@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="6"/>
+            <column name="customer_first_name" value="Peter"/>
+            <column name="customer_last_name" value="Johnson"/>
+            <column name="customer_street"/>
+            <column name="customer_city" value="Some City"/>
+            <column name="customer_state" value="NY"/>
+            <column name="customer_zip" value="12345"/>
+            <column name="customer_phone" value="555-555-3456"/>
+            <column name="customer_email" value="peter_johnson@anywhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="7"/>
+            <column name="customer_first_name" value="Edna"/>
+            <column name="customer_last_name" value="Hayes"/>
+            <column name="customer_street" value="158 Oak Road"/>
+            <column name="customer_city" value="Some City"/>
+            <column name="customer_state" value="M "/>
+            <column name="customer_zip" value="23458"/>
+            <column name="customer_phone" value="551-555-1234"/>
+            <column name="customer_email" value="edna_hayes@this.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="8"/>
+            <column name="customer_first_name" value="Franklin"/>
+            <column name="customer_last_name" value="Hayes"/>
+            <column name="customer_street" value="1990 Pine St."/>
+            <column name="customer_city" value="Little Town"/>
+            <column name="customer_state" value="M "/>
+            <column name="customer_zip" value="23456"/>
+            <column name="customer_phone" value="551-555-3939"/>
+            <column name="customer_email" value="franklin_hayes@this.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="9"/>
+            <column name="customer_first_name" value="Mary"/>
+            <column name="customer_last_name" value="Collins"/>
+            <column name="customer_street" value="RR1 Box 297"/>
+            <column name="customer_city" value="Rural Area"/>
+            <column name="customer_state" value="CO"/>
+            <column name="customer_zip" value="45678"/>
+            <column name="customer_phone" value="553-555-1234"/>
+            <column name="customer_email" value="mary_collins@rural.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="10"/>
+            <column name="customer_first_name" value="Peter"/>
+            <column name="customer_last_name" value="Collins"/>
+            <column name="customer_street" value="170 Dogwood Lane"/>
+            <column name="customer_city" value="Little Town"/>
+            <column name="customer_state" value="M "/>
+            <column name="customer_zip" value="23456"/>
+            <column name="customer_phone" value="551-555-8484"/>
+            <column name="customer_email" value="peter_collins@anywhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="11"/>
+            <column name="customer_first_name" value="Anne"/>
+            <column name="customer_last_name" value="Smith"/>
+            <column name="customer_street" value="RR 2 Box 9"/>
+            <column name="customer_city" value="Rural Area"/>
+            <column name="customer_state" value="CO"/>
+            <column name="customer_zip" value="45678"/>
+            <column name="customer_phone" value="553-555-9090"/>
+            <column name="customer_email" value="anne_smith@rural.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="12"/>
+            <column name="customer_first_name" value="Peter"/>
+            <column name="customer_last_name" value="Smith"/>
+            <column name="customer_street" value="21 Elm St."/>
+            <column name="customer_city" value="Anytown"/>
+            <column name="customer_state" value="NJ"/>
+            <column name="customer_zip" value="10111"/>
+            <column name="customer_phone" value="552-555-3459"/>
+            <column name="customer_email" value="peter_smith@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="13"/>
+            <column name="customer_first_name" value="Jerry"/>
+            <column name="customer_last_name" value="Brown"/>
+            <column name="customer_street" value="9745 Main Street"/>
+            <column name="customer_city" value="Anytown"/>
+            <column name="customer_state" value="NJ"/>
+            <column name="customer_zip" value="10111"/>
+            <column name="customer_phone" value="552-555-9876"/>
+            <column name="customer_email" value="jerry_brown@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Customers">
+            <column name="customer_numb" valueNumeric="14"/>
+            <column name="customer_first_name" value="Helen"/>
+            <column name="customer_last_name" value="Brown"/>
+            <column name="customer_street" value="2588 North Road"/>
+            <column name="customer_city" value="Some City"/>
+            <column name="customer_state" value="NY"/>
+            <column name="customer_zip" value="12555"/>
+            <column name="customer_phone" value="555-552-3939"/>
+            <column name="customer_email" value="helen_brown@somewhere.net"/>
+            <column name="referred_by"/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-10">
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="author_name"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Barth, John"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Bronte, Charlotte"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Bronte, Emily"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Butler, Octavia"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Cherryh, C. J."/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Clavell, James"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Dumas, Alexandre"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Lee, Tanith"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Ludlum, Rober"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="McCaffrey, Anne"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Rice, Anne"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Scott, Sir Walter"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Stevenson, Robert Louis"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Authors">
+            <column name="author_name" value="Twain, Mark"/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-11">
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="1"/>
+            <column name="customer_numb" valueNumeric="1"/>
+            <column name="order_date" valueDate="1999-12-05T00:00:00.0"/>
+            <column name="credit_card_numb" value="123 123 123 123"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-07-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="2"/>
+            <column name="customer_numb" valueNumeric="1"/>
+            <column name="order_date" valueDate="2000-07-06T00:00:00.0"/>
+            <column name="credit_card_numb" value="123 123 123 123"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-07-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="3"/>
+            <column name="customer_numb" valueNumeric="2"/>
+            <column name="order_date" valueDate="1999-11-12T00:00:00.0"/>
+            <column name="credit_card_numb" value="234 234 234 234"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-11-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="4"/>
+            <column name="customer_numb" valueNumeric="2"/>
+            <column name="order_date" valueDate="2000-03-18T00:00:00.0"/>
+            <column name="credit_card_numb" value="234 234 234 234"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-11-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="5"/>
+            <column name="customer_numb" valueNumeric="2"/>
+            <column name="order_date" valueDate="2000-07-06T00:00:00.0"/>
+            <column name="credit_card_numb" value="234 234 234 234"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2000-11-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="customer_numb" valueNumeric="3"/>
+            <column name="order_date" valueDate="1999-08-15T00:00:00.0"/>
+            <column name="credit_card_numb" value="345 345 345 345"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-01-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="7"/>
+            <column name="customer_numb" valueNumeric="3"/>
+            <column name="order_date" valueDate="1999-12-02T00:00:00.0"/>
+            <column name="credit_card_numb" value="345 345 345 345"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-01-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="customer_numb" valueNumeric="4"/>
+            <column name="order_date" valueDate="1999-11-22T00:00:00.0"/>
+            <column name="credit_card_numb" value="456 456 456 456"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-04-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="9"/>
+            <column name="customer_numb" valueNumeric="4"/>
+            <column name="order_date" valueDate="2000-01-06T00:00:00.0"/>
+            <column name="credit_card_numb" value="456 456 456 456"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-04-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="10"/>
+            <column name="customer_numb" valueNumeric="5"/>
+            <column name="order_date" valueDate="2000-03-12T00:00:00.0"/>
+            <column name="credit_card_numb" value="567 567 567 567"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2000-05-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="11"/>
+            <column name="customer_numb" valueNumeric="6"/>
+            <column name="order_date" valueDate="1999-09-19T00:00:00.0"/>
+            <column name="credit_card_numb" value="678 678 678 678"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-12-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="12"/>
+            <column name="customer_numb" valueNumeric="6"/>
+            <column name="order_date" valueDate="2000-03-12T00:00:00.0"/>
+            <column name="credit_card_numb" value="678 678 678 678"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-12-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="13"/>
+            <column name="customer_numb" valueNumeric="6"/>
+            <column name="order_date" valueDate="2000-07-21T00:00:00.0"/>
+            <column name="credit_card_numb" value="678 678 678 678"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2000-12-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="customer_numb" valueNumeric="7"/>
+            <column name="order_date" valueDate="1999-12-13T00:00:00.0"/>
+            <column name="credit_card_numb" value="789 789 789 789"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-12-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="15"/>
+            <column name="customer_numb" valueNumeric="7"/>
+            <column name="order_date" valueDate="2000-01-09T00:00:00.0"/>
+            <column name="credit_card_numb" value="789 789 789 789"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-12-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="customer_numb" valueNumeric="8"/>
+            <column name="order_date" valueDate="1999-10-12T00:00:00.0"/>
+            <column name="credit_card_numb" value="890 890 890 890"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-11-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="17"/>
+            <column name="customer_numb" valueNumeric="8"/>
+            <column name="order_date" valueDate="2000-02-22T00:00:00.0"/>
+            <column name="credit_card_numb" value="890 890 890 890"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-11-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="18"/>
+            <column name="customer_numb" valueNumeric="8"/>
+            <column name="order_date" valueDate="2000-05-13T00:00:00.0"/>
+            <column name="credit_card_numb" value="890 890 890 890"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-11-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="customer_numb" valueNumeric="9"/>
+            <column name="order_date" valueDate="2005-07-15T00:00:00.0"/>
+            <column name="credit_card_numb" value="901 901 901 901"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="1999-12-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="20"/>
+            <column name="customer_numb" valueNumeric="10"/>
+            <column name="order_date" valueDate="2005-11-15T00:00:00.0"/>
+            <column name="credit_card_numb" value="1000 1000 1000"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2001-10-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="21"/>
+            <column name="customer_numb" valueNumeric="10"/>
+            <column name="order_date" valueDate="2006-03-04T00:00:00.0"/>
+            <column name="credit_card_numb" value="1000 1000 1000"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-10-02T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="22"/>
+            <column name="customer_numb" valueNumeric="11"/>
+            <column name="order_date" valueDate="2006-09-19T00:00:00.0"/>
+            <column name="credit_card_numb" value="1100 1100 1100 "/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2000-02-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="customer_numb" valueNumeric="11"/>
+            <column name="order_date" valueDate="2007-02-21T00:00:00.0"/>
+            <column name="credit_card_numb" value="1100 1100 1100"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-02-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="24"/>
+            <column name="customer_numb" valueNumeric="11"/>
+            <column name="order_date" valueDate="2007-05-14T00:00:00.0"/>
+            <column name="credit_card_numb" value="1100 1100 1100"/>
+            <column name="order_filled" value="No"/>
+            <column name="credit_card_exp_date" valueDate="2000-02-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="25"/>
+            <column name="customer_numb" valueNumeric="12"/>
+            <column name="order_date" valueDate="2007-10-10T00:00:00.0"/>
+            <column name="credit_card_numb" value="1200 1200 1200"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="2001-09-01T00:00:00.0"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Orders">
+            <column name="order_numb" valueNumeric="26"/>
+            <column name="customer_numb" valueNumeric="1"/>
+            <column name="order_date" valueDate="2007-11-14T00:00:00.0"/>
+            <column name="credit_card_numb" value="123 123 123 123"/>
+            <column name="order_filled" value="Yes"/>
+            <column name="credit_card_exp_date" valueDate="1997-11-01T00:00:00.0"/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-12">
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-123-1233-0"/>
+            <column name="author_name" value="Dumas, Alexandre"/>
+            <column name="title" value="Three Musketeers, The"/>
+            <column name="publisher_name" value="Grosset &amp; Dunlap"/>
+            <column name="publication_year" valueNumeric="1953"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="15.95"/>
+            <column name="number_on_hand" valueNumeric="10"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-124-2999-9"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Celebrated Jumping Frog of Calaveras County"/>
+            <column name="publisher_name" value="Harper"/>
+            <column name="publication_year" valueNumeric="1903"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-124-5544-X"/>
+            <column name="author_name" value="Dumas, Alexandre"/>
+            <column name="title" value="Titans, The"/>
+            <column name="publisher_name" value="Harper"/>
+            <column name="publication_year" valueNumeric="1957"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="4"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-124-7989-1"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Dog\\&quot;s Tale, A"/>
+            <column name="publisher_name" value="Harper"/>
+            <column name="publication_year" valueNumeric="1904"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-125-3344-1"/>
+            <column name="author_name" value="Dumas, Alexandre"/>
+            <column name="title" value="Black Tulip, The"/>
+            <column name="publisher_name" value="P. F. Collier &amp; So"/>
+            <column name="publication_year" valueNumeric="1902"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-126-3367-2"/>
+            <column name="author_name" value="Dumas, Alexandre"/>
+            <column name="title" value="Count of Monte Cristo, The"/>
+            <column name="publisher_name" value="Platt &amp; Munk"/>
+            <column name="publication_year" valueNumeric="1968"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-127-3948-2"/>
+            <column name="author_name" value="Dumas, Alexandre"/>
+            <column name="title" value="Corsican Brothers, The"/>
+            <column name="publisher_name" value="Metheu"/>
+            <column name="publication_year" valueNumeric="1970"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="15.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-128-3939-2"/>
+            <column name="author_name" value="Clavell, James"/>
+            <column name="title" value="Gai-Ji"/>
+            <column name="publisher_name" value="Delacorte"/>
+            <column name="publication_year" valueNumeric="1993"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="25.95"/>
+            <column name="number_on_hand" valueNumeric="15"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-128-3939-X"/>
+            <column name="author_name" value="Clavell, James"/>
+            <column name="title" value="Noble House"/>
+            <column name="publisher_name" value="Delacorte"/>
+            <column name="publication_year" valueNumeric="1981"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-128-4321-1"/>
+            <column name="author_name" value="Clavell, James"/>
+            <column name="title" value="Tai-Pa"/>
+            <column name="publisher_name" value="Delacorte"/>
+            <column name="publication_year" valueNumeric="1966"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-129-4567-1"/>
+            <column name="author_name" value="McCaffrey, Anne"/>
+            <column name="title" value="Dragonsong"/>
+            <column name="publisher_name" value="Atheneum"/>
+            <column name="publication_year" valueNumeric="1976"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-129-4912-0"/>
+            <column name="author_name" value="McCaffrey, Anne"/>
+            <column name="title" value="Dragonsinger"/>
+            <column name="publisher_name" value="Atheneum"/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="13"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-129-9293-2"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Black Unicor"/>
+            <column name="publisher_name" value="Atheneum"/>
+            <column name="publication_year" valueNumeric="1991"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-129-9876-5"/>
+            <column name="author_name" value="Clavell, James"/>
+            <column name="title" value="Shogu"/>
+            <column name="publisher_name" value="Atheneum"/>
+            <column name="publication_year" valueNumeric="1975"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-130-2939-4"/>
+            <column name="author_name" value="McCaffrey, Anne"/>
+            <column name="title" value="White Dragon, The"/>
+            <column name="publisher_name" value="Ballantine Books"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-130-2943-2"/>
+            <column name="author_name" value="McCaffrey, Anne"/>
+            <column name="title" value="Dragonflight"/>
+            <column name="publisher_name" value="Ballantine Books"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="15.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-130-3941-7"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Feast of All Saints, The"/>
+            <column name="publisher_name" value="Ballantine Books"/>
+            <column name="publication_year" valueNumeric="1992"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="18"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-130-9483-1"/>
+            <column name="author_name" value="McCaffrey, Anne"/>
+            <column name="title" value="Dragonquest"/>
+            <column name="publisher_name" value="Ballantine Books"/>
+            <column name="publication_year" valueNumeric="1979"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="9"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-1458-9"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Interview with the Vampire"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1976"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-3021-2"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Tale of the Body Thief, The"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1992"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="18"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-4809-X"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Vampire Lestat, The"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1985"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-4912-X"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Taltos"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1994"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-4966-9"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Lasher"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1993"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="15"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-131-9456-2"/>
+            <column name="author_name" value="Rice, Anne"/>
+            <column name="title" value="Cry to Heave"/>
+            <column name="publisher_name" value="Knopf"/>
+            <column name="publication_year" valueNumeric="1982"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="25.95"/>
+            <column name="number_on_hand" valueNumeric="16"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-132-3949-2"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Prince and the Pauper, The"/>
+            <column name="publisher_name" value="James R. Osgood and Co."/>
+            <column name="publication_year" valueNumeric="1882"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="10"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-132-9876-4"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Life on the Mississippi"/>
+            <column name="publisher_name" value="James R. Osgood and Co."/>
+            <column name="publication_year" valueNumeric="1883"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="11"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-133-2956-6"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Inoocents Abroad, The"/>
+            <column name="publisher_name" value="American Publishing Co."/>
+            <column name="publication_year" valueNumeric="1869"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-133-5935-2"/>
+            <column name="author_name" value="Twain, Mark"/>
+            <column name="title" value="Pudd\\&quot;nhead Wilso"/>
+            <column name="publisher_name" value="American Publishing Co."/>
+            <column name="publication_year" valueNumeric="1894"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="17.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-134-3945-7"/>
+            <column name="author_name" value="Stevenson, Robert Louis"/>
+            <column name="title" value="Child\\&quot;s Garden of Verses, A"/>
+            <column name="publisher_name" value="Scribner"/>
+            <column name="publication_year" valueNumeric="1905"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-135-2222-2"/>
+            <column name="author_name" value="Stevenson, Robert Louis"/>
+            <column name="title" value="Treasure Island"/>
+            <column name="publisher_name" value="J. W. Lovell Co."/>
+            <column name="publication_year" valueNumeric="1886"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-136-3956-1"/>
+            <column name="author_name" value="Stevenson, Robert Louis"/>
+            <column name="title" value="Kidnapped"/>
+            <column name="publisher_name" value="Dodd, Mead"/>
+            <column name="publication_year" valueNumeric="1949"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-136-3966-7"/>
+            <column name="author_name" value="Stevenson, Robert Louis"/>
+            <column name="title" value="Strange Case of Dr. Jekyll and Mr. Hyde"/>
+            <column name="publisher_name" value="Dodd, Mead"/>
+            <column name="publication_year" valueNumeric="1964"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="18"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-137-1293-9"/>
+            <column name="author_name" value="Scott, Sir Walter"/>
+            <column name="title" value="Rob Roy"/>
+            <column name="publisher_name" value="D. Appleton &amp; Co."/>
+            <column name="publication_year" valueNumeric="1898"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="22"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-138-1379-8"/>
+            <column name="author_name" value="Scott, Sir Walter"/>
+            <column name="title" value="Ivanhoe"/>
+            <column name="publisher_name" value="Hart Publishing Co."/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-140-3877-0"/>
+            <column name="author_name" value="Scott, Sir Walter"/>
+            <column name="title" value="Waverly Novels"/>
+            <column name="publisher_name" value="University of Nebraska Press"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="27.95"/>
+            <column name="number_on_hand" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-141-9876-4"/>
+            <column name="author_name" value="Bronte, Emily"/>
+            <column name="title" value="Complete Poems of Emily Jane Bronte, The"/>
+            <column name="publisher_name" value="Columbia University Press"/>
+            <column name="publication_year" valueNumeric="1941"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-142-0084-2"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Clay\\&quot;s Ark"/>
+            <column name="publisher_name" value="St. Martin\\&quot;s Press"/>
+            <column name="publication_year" valueNumeric="1984"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-142-3867-8"/>
+            <column name="author_name" value="Bronte, Emily"/>
+            <column name="title" value="Wuthering Heights"/>
+            <column name="publisher_name" value="St. Martin\\&quot;s Press"/>
+            <column name="publication_year" valueNumeric="1968"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-142-3988-2"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="East of Midnight"/>
+            <column name="publisher_name" value="St. Martin\\&quot;s Press"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="15"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-150-3765-2"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Aquitaine Progression, The"/>
+            <column name="publisher_name" value="Random House"/>
+            <column name="publication_year" valueNumeric="1984"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="25.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-150-3949-9"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Parsifal Mosaic, The"/>
+            <column name="publisher_name" value="Random House"/>
+            <column name="publication_year" valueNumeric="1982"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="14"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-150-5948-9"/>
+            <column name="author_name" value="Bronte, Charlotte"/>
+            <column name="title" value="Jane Eyre"/>
+            <column name="publisher_name" value="Random House"/>
+            <column name="publication_year" valueNumeric="1943"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="15"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-151-9876-2"/>
+            <column name="author_name" value="Bronte, Charlotte"/>
+            <column name="title" value="Vilette"/>
+            <column name="publisher_name" value="Clarendon Press"/>
+            <column name="publication_year" valueNumeric="1984"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="15"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-155-2346-5"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Tarzan and the Forbidden City"/>
+            <column name="publisher_name" value="E. R. burroughs, Inc."/>
+            <column name="publication_year" valueNumeric="1938"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-157-3849-X"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="People that Time Forgot, The"/>
+            <column name="publisher_name" value="Tandem"/>
+            <column name="publication_year" valueNumeric="1975"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-157-9876-2"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Out of Time\\&quot;s Abyss"/>
+            <column name="publisher_name" value="Tandem"/>
+            <column name="publication_year" valueNumeric="1973"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="4"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-158-0493-2"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Tarzan the Magnificent"/>
+            <column name="publisher_name" value="New English Library"/>
+            <column name="publication_year" valueNumeric="1974"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-158-8374-3"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Tarzan of the Apes"/>
+            <column name="publisher_name" value="New English Library"/>
+            <column name="publication_year" valueNumeric="1975"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-159-2948-2"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="War Chief, The"/>
+            <column name="publisher_name" value="Gregg Press"/>
+            <column name="publication_year" valueNumeric="1927"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-159-3845-3"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Bandit of Hell\\&quot;s Bend, The"/>
+            <column name="publisher_name" value="Gregg Press"/>
+            <column name="publication_year" valueNumeric="1925"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-159-5839-3"/>
+            <column name="author_name" value="Burroughs, Edgar Rice"/>
+            <column name="title" value="Apache Devil"/>
+            <column name="publisher_name" value="Gregg Press"/>
+            <column name="publication_year" valueNumeric="1933"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="4"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-160-3456-7"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Gemini Contenders, The"/>
+            <column name="publisher_name" value="Dial Press"/>
+            <column name="publication_year" valueNumeric="1976"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="22"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-160-8325-7"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Chancellor Manuscript, The"/>
+            <column name="publisher_name" value="Dial Press"/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="18"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-161-0123-9"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Bourne Identify, The"/>
+            <column name="publisher_name" value="R. Marek Publishers"/>
+            <column name="publication_year" valueNumeric="1980"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="10"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-161-8478-1"/>
+            <column name="author_name" value="Ludlum, Robert"/>
+            <column name="title" value="Holcroft Covenant, The"/>
+            <column name="publisher_name" value="R. Marek Publishers"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="16"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-162-3948-0"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Chimera"/>
+            <column name="publisher_name" value="Deutsch"/>
+            <column name="publication_year" valueNumeric="1974"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="17.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-164-4857-2"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Sabbatical: A Romance"/>
+            <column name="publisher_name" value="Putnam"/>
+            <column name="publication_year" valueNumeric="1982"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="7"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-164-5968-0"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Letters: A Novel"/>
+            <column name="publisher_name" value="Putnam"/>
+            <column name="publication_year" valueNumeric="1979"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="27.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-166-8394-3"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Sot-Weed Factor, The"/>
+            <column name="publisher_name" value="Franklin Library"/>
+            <column name="publication_year" valueNumeric="1980"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="27.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-167-1945-1"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Floating Opera and The End of the Road, The"/>
+            <column name="publisher_name" value="Anchor Press"/>
+            <column name="publication_year" valueNumeric="1988"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="9"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-167-3965-2"/>
+            <column name="author_name" value="Barth, Joh"/>
+            <column name="title" value="Giles Goat-Boy"/>
+            <column name="publisher_name" value="Anchor Press"/>
+            <column name="publication_year" valueNumeric="1987"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="24.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-2945-9"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Electric Forest"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1979"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="21"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-3948-2"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Patternmaster"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1976"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="19"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-4567-3"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Survivor"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="15.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-4712-X"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Mind of My Mind"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="4"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-4921-4"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Hunter of Worlds"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="18"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-4977-5"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Brothers of Earth"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1976"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-6464-4"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Serpent\\&quot;s Reach"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1980"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="9"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-7388-1"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Faded Sun, Kesrith, The"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-7400-X"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Faded Sun, Shon\\&quot;jir, The"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-8644-2"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Wild Seed"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1980"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="9"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-180-8655-0"/>
+            <column name="author_name" value="Butler, Octavia"/>
+            <column name="title" value="Kindred"/>
+            <column name="publisher_name" value="Doubleday"/>
+            <column name="publication_year" valueNumeric="1979"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-185-8776-2"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Castle of Dark, The"/>
+            <column name="publisher_name" value="Macmilla"/>
+            <column name="publication_year" valueNumeric="1978"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-185-9855-2"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Winter Players, The"/>
+            <column name="publisher_name" value="Macmilla"/>
+            <column name="publication_year" valueNumeric="1977"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="15.95"/>
+            <column name="number_on_hand" valueNumeric="12"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-190-2345-2"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Book of the Damned, The"/>
+            <column name="publisher_name" value="Overlook Press"/>
+            <column name="publication_year" valueNumeric="1990"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="21.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-190-3956-1"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Book of the Beast, The"/>
+            <column name="publisher_name" value="Overlook Press"/>
+            <column name="publication_year" valueNumeric="1991"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="8"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-190-3967-5"/>
+            <column name="author_name" value="Lee, Tanith"/>
+            <column name="title" value="Book of the Dead, The"/>
+            <column name="publisher_name" value="Overlook Press"/>
+            <column name="publication_year" valueNumeric="1991"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="retail_price" valueNumeric="22.95"/>
+            <column name="number_on_hand" valueNumeric="3"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-191-4893-0"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Rimrunners"/>
+            <column name="publisher_name" value="Warner Books"/>
+            <column name="publication_year" valueNumeric="1989"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="19.95"/>
+            <column name="number_on_hand" valueNumeric="2"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-191-4934-8"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Heavy Time"/>
+            <column name="publisher_name" value="Warner Books"/>
+            <column name="publication_year" valueNumeric="1991"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="7"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-191-4959-2"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Cytee"/>
+            <column name="publisher_name" value="Warner Books"/>
+            <column name="publication_year" valueNumeric="1988"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="5"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-191-8654-3"/>
+            <column name="author_name" value="Cherryh, C. J."/>
+            <column name="title" value="Hellburner"/>
+            <column name="publisher_name" value="Warner Books"/>
+            <column name="publication_year" valueNumeric="1992"/>
+            <column name="binding" value="hc"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="23.95"/>
+            <column name="number_on_hand" valueNumeric="10"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Books">
+            <column name="isbn" value="0-200-3939-2"/>
+            <column name="author_name" value="Bronte, Emily"/>
+            <column name="title" value="My Very Best Work"/>
+            <column name="publisher_name" value="Harper"/>
+            <column name="publication_year" valueNumeric="1810"/>
+            <column name="binding" value="hb"/>
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="retail_price" valueNumeric="18.95"/>
+            <column name="number_on_hand" valueNumeric="6"/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-13">
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="1"/>
+            <column name="isbn" value="0-123-1233-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="15.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="1"/>
+            <column name="isbn" value="0-129-4912-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="1"/>
+            <column name="isbn" value="0-136-3966-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="2"/>
+            <column name="isbn" value="0-131-4912-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="2"/>
+            <column name="isbn" value="0-159-3845-3"/>
+            <column name="quantity" valueNumeric="2"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="39.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="3"/>
+            <column name="isbn" value="0-131-4966-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="3"/>
+            <column name="isbn" value="0-150-5948-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="3"/>
+            <column name="isbn" value="0-180-4712-X"/>
+            <column name="quantity" valueNumeric="2"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="39.90"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="3"/>
+            <column name="isbn" value="0-191-4934-8"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="4"/>
+            <column name="isbn" value="0-140-3877-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="5"/>
+            <column name="isbn" value="0-124-2999-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="18.95"/>
+            <column name="cost_line" valueNumeric="18.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="5"/>
+            <column name="isbn" value="0-140-3877-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="5"/>
+            <column name="isbn" value="0-180-7388-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="isbn" value="0-132-3949-2"/>
+            <column name="quantity" valueNumeric="2"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="31.90"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="isbn" value="0-142-0084-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="isbn" value="0-151-9876-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="isbn" value="0-180-7400-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="6"/>
+            <column name="isbn" value="0-191-4934-8"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="7"/>
+            <column name="isbn" value="0-135-2222-2"/>
+            <column name="quantity" valueNumeric="5"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="124.75"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="7"/>
+            <column name="isbn" value="0-141-9876-4"/>
+            <column name="quantity" valueNumeric="5"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="109.75"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="7"/>
+            <column name="isbn" value="0-191-4934-8"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-127-3948-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="15.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-130-2939-4"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-131-4912-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-133-5935-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="17.95"/>
+            <column name="cost_line" valueNumeric="17.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-161-0123-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-167-1945-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-180-4712-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="8"/>
+            <column name="isbn" value="0-190-3967-5"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="9"/>
+            <column name="isbn" value="0-140-3877-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="9"/>
+            <column name="isbn" value="0-159-5839-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="10"/>
+            <column name="isbn" value="0-132-3949-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="10"/>
+            <column name="isbn" value="0-136-3956-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="10"/>
+            <column name="isbn" value="0-142-0084-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="10"/>
+            <column name="isbn" value="0-155-2346-5"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="18.95"/>
+            <column name="cost_line" valueNumeric="18.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="11"/>
+            <column name="isbn" value="0-127-3948-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="15.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="11"/>
+            <column name="isbn" value="0-134-3945-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="11"/>
+            <column name="isbn" value="0-166-8394-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="12"/>
+            <column name="isbn" value="0-130-2939-4"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="12"/>
+            <column name="isbn" value="0-142-0084-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="12"/>
+            <column name="isbn" value="0-157-3849-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="12"/>
+            <column name="isbn" value="0-161-8478-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="13"/>
+            <column name="isbn" value="0-142-0084-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="13"/>
+            <column name="isbn" value="0-160-3456-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="13"/>
+            <column name="isbn" value="0-180-8655-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="18.95"/>
+            <column name="cost_line" valueNumeric="18.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="13"/>
+            <column name="isbn" value="0-191-4959-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="18.95"/>
+            <column name="cost_line" valueNumeric="18.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="isbn" value="0-130-3941-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="isbn" value="0-131-4912-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="isbn" value="0-137-1293-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="isbn" value="0-157-3849-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="14"/>
+            <column name="isbn" value="0-159-5839-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="15"/>
+            <column name="isbn" value="0-123-1233-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="15.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="isbn" value="0-128-4321-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="isbn" value="0-131-3021-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="isbn" value="0-132-9876-4"/>
+            <column name="quantity" valueNumeric="2"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="39.90"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="isbn" value="0-134-3945-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="16"/>
+            <column name="isbn" value="0-157-9876-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="17"/>
+            <column name="isbn" value="0-131-3021-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="17"/>
+            <column name="isbn" value="0-161-0123-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="17"/>
+            <column name="isbn" value="0-190-3956-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="18"/>
+            <column name="isbn" value="0-128-4321-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="18"/>
+            <column name="isbn" value="0-134-3945-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="18"/>
+            <column name="isbn" value="0-180-4567-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="15.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="18"/>
+            <column name="isbn" value="0-190-3967-5"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="22.95"/>
+            <column name="cost_line" valueNumeric="22.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="isbn" value="0-131-3021-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="isbn" value="0-150-3765-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="25.95"/>
+            <column name="cost_line" valueNumeric="25.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="isbn" value="0-150-5948-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="isbn" value="0-161-8478-1"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="19"/>
+            <column name="isbn" value="0-191-4893-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="20"/>
+            <column name="isbn" value="0-142-3988-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="20"/>
+            <column name="isbn" value="0-191-8654-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="21"/>
+            <column name="isbn" value="0-126-3367-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="21"/>
+            <column name="isbn" value="0-131-4966-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="21"/>
+            <column name="isbn" value="0-134-3945-7"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="22"/>
+            <column name="isbn" value="0-130-2943-2"/>
+            <column name="quantity" valueNumeric="2"/>
+            <column name="cost_each" valueNumeric="15.95"/>
+            <column name="cost_line" valueNumeric="31.90"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-128-3939-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="25.95"/>
+            <column name="cost_line" valueNumeric="25.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-129-9293-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-131-4966-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-135-2222-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="24.95"/>
+            <column name="cost_line" valueNumeric="24.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-157-3849-X"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-164-5968-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="23"/>
+            <column name="isbn" value="0-166-8394-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="24"/>
+            <column name="isbn" value="0-131-4966-9"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="24"/>
+            <column name="isbn" value="0-164-5968-0"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="27.95"/>
+            <column name="cost_line" valueNumeric="27.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="24"/>
+            <column name="isbn" value="0-191-8654-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="23.95"/>
+            <column name="cost_line" valueNumeric="23.95"/>
+            <column name="shipped" value="N"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="25"/>
+            <column name="isbn" value="0-129-9293-2"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="21.95"/>
+            <column name="cost_line" valueNumeric="21.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+        <insert schemaName="dbo" tableName="order_lines">
+            <column name="order_numb" valueNumeric="25"/>
+            <column name="isbn" value="0-159-5839-3"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="cost_each" valueNumeric="19.95"/>
+            <column name="cost_line" valueNumeric="19.95"/>
+            <column name="shipped" value="Y"/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-14">
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="American Publishing Co"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Anchor Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Atheneum"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Ballantine Books"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Clarendon Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Columbia University Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="D. Appleton &amp; Co"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Delacorte"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Deutsch"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Dial Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Dodd, Mead"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Doubleday"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="E. R. Burroughs, Inc."/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Franklin Library"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Gregg Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Grosset &amp; Dunlap"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Harper"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Hart Publishing Co."/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="J. W. Lovell Co."/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="James R. Osgood and Co."/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Knopf"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Macmillan"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Metheun"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="New English Library"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Overlook Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="P. F. Collier &amp; Son"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Platt &amp; Munk"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Putnam"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="R. Marek Publishers"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Random House"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Scribner"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="St. Martin's Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Tandem"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="University of Nebraska Press"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="Warner Books"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Publishers">
+            <column name="publisher_name" value="World Pub. Co."/>
+        </insert>
+    </changeSet>
+    <changeSet author="konopski (generated)" id="1363003984140-15">
+        <insert schemaName="dbo" tableName="Sources">
+            <column name="source_numb" valueNumeric="1"/>
+            <column name="source_name" value="Ingram"/>
+            <column name="source_street" value="123 West 99th"/>
+            <column name="source_city" value="Philadelphia"/>
+            <column name="source_state" value="PA"/>
+            <column name="source_zip" value="19112"/>
+            <column name="source_phone" value="555-555-1111"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Sources">
+            <column name="source_numb" valueNumeric="2"/>
+            <column name="source_name" value="Baker and Taylor"/>
+            <column name="source_street" value="99 256th Ave"/>
+            <column name="source_city" value="Minneapolis"/>
+            <column name="source_state" value="MN"/>
+            <column name="source_zip" value="68112"/>
+            <column name="source_phone" value="551-555-2222"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Sources">
+            <column name="source_numb" valueNumeric="3"/>
+            <column name="source_name" value="Jostens"/>
+            <column name="source_street" value="19594 Highway 28"/>
+            <column name="source_city" value="Seattle"/>
+            <column name="source_state" value="WA"/>
+            <column name="source_zip" value="98333"/>
+            <column name="source_phone" value="552-555-3333"/>
+        </insert>
+        <insert schemaName="dbo" tableName="Sources">
+            <column name="source_numb" valueNumeric="4"/>
+            <column name="source_name" value="Brodart"/>
+            <column name="source_street" value="1944 Bayview Blvd"/>
+            <column name="source_city" value="Los Angeles"/>
+            <column name="source_state" value="CA"/>
+            <column name="source_zip" value="96111"/>
+            <column name="source_phone" value="553-555-4444"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
